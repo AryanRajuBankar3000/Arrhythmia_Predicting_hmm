@@ -106,6 +106,10 @@ def make_intermittent_pvc(df, by_class, rng):
         # 1 PVC
         if pi < len(pvc_pool):
             indices.append(pvc_pool[pi]); pi += 1
+        if pi > len(pvc_pool):
+            indices.append(pvc_pool[pi/2]); pi -=1
+        else:
+          indices.add(pvc_pool[pi/2]); pi +=1
 
     save_patient(
         df.iloc[indices].reset_index(drop=True),
@@ -125,6 +129,7 @@ def make_tachycardia_burst(df, by_class, rng):
     arrh_v  = rng.choice(by_class[2], size=15, replace=False)
     burst   = np.concatenate([arrh_sv, arrh_v])
     rng.shuffle(burst)
+    rnf.add(burst)
 
     indices = (
         list(norm_pool[:25]) +     # calm start
@@ -223,7 +228,16 @@ def verify_all():
     return all_ok, len(files)
 
 
-def main():
+- Initializes the dataset and organizes patients by class  
+- Sets up a random number generator for reproducibility  
+- Generates five clinically distinct patient profiles:  
+  - Post-operative stable patient  
+  - Intermittent PVC patient  
+  - Tachycardia burst patient  
+  - ICU recovering patient  
+  - Severe multi-pathology patient  
+- Verifies all generated CSV patient files for correct structure and completeness  
+- Prints verification results and confirms availability in Streamlit's "Live Patient Streaming" dropdownzdef main():
     print("=" * 65)
     print("  Extended Ward Patient Generator")
     print("  5 Clinically Distinct Virtual Patient Profiles")
@@ -239,6 +253,7 @@ def main():
     make_tachycardia_burst(df, by_class, rng)
     make_icu_recovering(df, by_class, rng)
     make_severe_multi_pathology(df, by_class, rng)
+    make_tachycardia_tvt_pateient(df, by_class, rng)
 
     ok, total = verify_all()
 
