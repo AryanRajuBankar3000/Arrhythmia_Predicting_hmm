@@ -231,8 +231,7 @@ def plot_ecg_waveform(beat_row, beat_idx, pred):
     ax.fill_between(t, beat_row, alpha=0.12, color=color)
     ax.set_xlabel("Time (s)", fontsize=10, fontweight="bold", color="#e6edf3")
     ax.set_ylabel("Voltage (norm.)", fontsize=10, fontweight="bold", color="#e6edf3")
-    ax.set_title(f"Beat #{beat_idx + 1}  --  Predicted: {label}",
-                 fontsize=12, fontweight="bold", color=color, pad=8)
+    ax.set_title(f"Beat #{beat_idx + 1}  --  Predicted: {label}",fontsize=12, fontweight="bold", color=color, pad=8)
     fig.tight_layout(); return fig
 
 
