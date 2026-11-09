@@ -359,7 +359,7 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("**Model Hyperparameters**")
-    n_states     = st.slider("Hidden States",          2,    8,    4,   1)
+    n_states     = st.slider("Hidden States",          2,    8,    6,   1)
     n_per_class  = st.slider("Training Samples/Class", 50,   3000, 200, 50)
     n_iter       = st.slider("Max EM Iterations",      10,   200,  100, 10)
     n_components = st.slider("PCA Components",         5,    50,   25,  5)
