@@ -248,17 +248,14 @@ def render_results(preds, lls, y_true, X_test, m_norm, n_states, elapsed, source
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown(f'<div class="stat-card"><div class="stat-value blue">{total:,}</div>'
-                    f'<div class="stat-label">Total Heartbeats Evaluated</div></div>',
-                    unsafe_allow_html=True)
+                    f'<div class="stat-label">Total Heartbeats Evaluated</div></div>',unsafe_allow_html=True)
     with c2:
         st.markdown(f'<div class="stat-card"><div class="stat-value red">{arrh:,}</div>'
-                    f'<div class="stat-label">Detected Arrhythmias</div></div>',
-                    unsafe_allow_html=True)
+                    f'<div class="stat-label">Detected Arrhythmias</div></div>',unsafe_allow_html=True)
     with c3:
         st.markdown(f'<div class="stat-card">'
                     f'<div class="stat-value" style="color:{risk["color"]};">{pct:.1f}%</div>'
-                    f'<div class="stat-label">Arrhythmic Burden</div></div>',
-                    unsafe_allow_html=True)
+                    f'<div class="stat-label">Arrhythmic Burden</div></div>',unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -266,8 +263,7 @@ def render_results(preds, lls, y_true, X_test, m_norm, n_states, elapsed, source
     st.markdown(
         f'<div class="risk-box {risk["css"]}">'
         f'<h2 style="color:{risk["color"]};">[{risk["emoji"]}] Risk Level: {risk["level"]}</h2>'
-        f'<p>{risk["summary"]}</p></div>',
-        unsafe_allow_html=True)
+        f'<p>{risk["summary"]}</p></div>',unsafe_allow_html=True)
 
     with st.expander("Full Clinical Analysis", expanded=False):
         st.markdown(f"**Findings:** {risk['detail']}")
@@ -291,8 +287,7 @@ def render_results(preds, lls, y_true, X_test, m_norm, n_states, elapsed, source
         st.pyplot(fig_tm); plt.close(fig_tm)
 
     with tab2:
-        st.markdown("Each beat is scored by both HMMs. **Delta-LL > 0** -> Normal; "
-                    "**Delta-LL < 0** -> Arrhythmia. Wider separation = more confident predictions.")
+        st.markdown("Each beat is scored by both HMMs. **Delta-LL > 0** -> Normal; ""**Delta-LL < 0** -> Arrhythmia. Wider separation = more confident predictions.")
         fig_ll = plot_ll_histogram(lls, y_true)
         st.pyplot(fig_ll); plt.close(fig_ll)
 
@@ -537,9 +532,8 @@ elif mode == "Full MIT-BIH Benchmark":
             ("5",      "Original ECG Classes","gold"),
         ]):
             with col:
-                st.markdown(f'<div class="stat-card"><div class="stat-value {cls}">{val}</div>'
-                            f'<div class="stat-label">{label}</div></div>',
-                            unsafe_allow_html=True)
+                st.markdown(f'<div class="stat-card"><div class="stat-value {cls}">{val}</div>' 
+                            f'<div class="stat-label">{label}</div></div>',unsafe_allow_html=True)
         st.markdown("---")
         st.markdown("> Adjust hyperparameters in the sidebar, then click **Run Full Pipeline**.")
     else:
